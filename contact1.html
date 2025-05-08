@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saihari Papers - Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family:  sans-serif;
+      background: #f4f4f4;
+      align-items: center;
+      justify-content: baseline;
+      font-size: medium;
+    }
+    header {
+      background-color: #ffffff;
+      color: #035b8b;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Ensure it appears on top of all content */
+      transition: opacity 0.1 s ease;
+    }
+    .splash-screen img {
+      width: 350px; /* Adjust logo size */
+      height: auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 80px;
+      width: 180px;
+      margin-right: 10px;
+    }
+    .contact {
+      font-size: 14px;
+    }
+    nav {
+      background: linear-gradient(to right, #00c3ff, #005f99);
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #eef3f6;
+      font-weight: 700;
+      font-size:large;
+    }
+    .section {
+      padding: 50px 20px;
+      text-align: center;
+      background-color: #fff;
+    }
+    .section h2 {
+      color: #035b8b;
+      margin-bottom: 20px;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      }
+     /* Wrap the form and locations */
+     .contact-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  padding: 0 20px;
+}
+/* Quote form styling */
+.form-column {
+  width: 100%;
+  max-width: 700px; /* Increased width */
+  background: linear-gradient(to right, #00c3ff, #005f99);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  }
+.form-column:hover {
+  transform: scale(1.01);
+  }
+ form label {
+  font-weight: 500;
+  color: #444;
+  }
+form input, form select, form textarea {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  }
+
+button {
+  border-radius: 10px;
+  /* background: linear-gradient(to right, #00c3ff, #035b8b); */
+  font-weight: 600;
+  }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    button {
+      margin-top: 8px;
+      padding: 10px 20px;
+      background-color: #035b8b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .locations {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+ .locations-column {
+  display: flex;
+  flex-direction: row; /* horizontal layout */
+  gap: 30px;            /* spacing between boxes */
+  flex-wrap: wrap;      /* allows wrapping on small screens */
+  justify-content: center; /* center the row */
+}
+.location-box {
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: medium;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+.location-box:hover {
+  transform: translateY(-5px);
+}
+.location-image {
+  width: 88%;           /* Full width of its container */
+  max-height: 250px;     /* Limit height to 160px */
+  object-fit: cover;     /* Maintain aspect ratio and crop if necessary */
+  border-radius: 10px;   /* Rounded corners */
+  margin-bottom: 10px;
+}
+
+.location-box a {
+  color: #007BFF;
+  text-decoration: none; /* Removed underline */
+}
+.location-box h3 {color: #000000;text-align: left;}
+ /* ******FOOTER********* */
+ .footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 280px;
+  text-align: left;
+}
+
+.footer-title {
+  border-bottom: 2px solid #00b4d8;
+  display: inline-block;
+  padding-bottom: 5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #fafbfb;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+/* Base responsive setup */
+* {
+  box-sizing: border-box;
+}
+
+.about-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.about-content-wrapper > div {
+  flex: 1;
+  min-width: 280px; /* allows wrapping nicely on mobile */
+}
+
+   /* Media query for mobile devices */
+@media (max-width: 768px) {
+  .about-content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .about-content-wrapper > div {
+    width: 100%;
+    max-width: 100%;
+  }
+      .about-text {
+        order: 2;
+        padding: 20px 0;
+      }
+
+      .about-image {
+        order: 1;
+        margin-bottom: 20px;
+      }
+
+      .right-image {
+        order: 3;
+      }
+      .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+  }
+
+  .footer-column {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+     <!-- Splash Screen -->
+     <div class="splash-screen" id="splashScreen">
+      <img src="/images/logo.jpg" alt="Saihari Papers Logo" />
+    </div>
+
+  <header>
+    <div class="logo">
+      <a href="home1.html"><img src="/images/logo.jpg" alt="Saihari Papers Logo" /></a>
+      <!-- <strong>Saihari Papers</strong> -->
+    </div>
+    <div class="contact">
+      📞 9865543794 | ✉️ 
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=saiharipapers@gmail.com" target="_blank" style="color:#00c3ff;text-decoration:none;" ">
+        saiharipapers@gmail.com</a>
+       | 📍 
+      <a href="https://goo.gl/maps/Ewt5EWQABJuNsHEJ8" style="color:#00c3ff; text-decoration:none;"> Locate Us </a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="home1.html">Home</a> |
+        <a href="whoweare1.html">Who We Are</a> |
+        <a href="services1.html">Services</a> |
+        <a href="gallery1.html">Gallery</a> |
+        <a href="contact1.html">Contact</a>
+  </nav>
+
+  <section class="section">
+    <div class="contact-container">
+      <!-- Left: Locations -->
+      <div class="locations-column">
+        <div class="location-box">
+          <h3>🏢 Head Office</h3>
+          <img src="/images/factoryw.JPG" alt="Head Office" class="location-image">
+          <p>No.6, Chinna Subbannan Layout,<br>NSR Road, Sai Baba Colony,<br>Coimbatore, Tamil Nadu - 641011</p>
+          <a href="https://goo.gl/maps/Ewt5EWQABJuNsHEJ8" target="_blank">📍 View on Google Maps</a>
+        </div>
+        <div class="location-box">
+          <h3>🏭 Manufacturing Unit</h3>
+          <img src="/images/SSP_5338.JPG" alt="Head Office" class="location-image">
+          <p>Tiruchengode to Kokkarayanpettai Road,<br>Emapally Village,<br>Namakkal, Tamil Nadu - 637214</p>
+          <a href="https://goo.gl/maps/Ewt5EWQABJuNsHEJ8" target="_blank">📍 View on Google Maps</a>
+        </div>
+        <div class="location-box">
+          <h3>🏭 Conversion Unit</h3>
+          <img src="/images/SSP_5382.JPG" alt="Head Office" class="location-image">
+          <p>Manthoppu Pirivu, Seeliyur (via),<br>Mettupalayam Taluk,<br>Coimbatore – 641113</p>
+          <a href="https://maps.app.goo.gl/Tj7QJzryb5JQ26A4A" target="_blank">📍 View on Google Maps</a>
+        </div>
+      </div>
+    
+      <!-- Right: Quote Form -->
+      <div class="form-column">
+        <h2 style="color: #ffffff; text-align:center; margin-bottom: 20px;font-family: 'Times New Roman', Times, serif;">Request a Quote</h2>
+        <form>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your full name" />
+    
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" />
+    
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+91 9876543210" />
+    
+          <label for="product">Product Type</label>
+          <select id="product" name="product" required>
+            <option value="">--Select Product--</option>
+            <option value="notebooks">Notebooks</option>
+            <option value="copiers">Copier Paper</option>
+            <option value="bakery">Bakery Sheets</option>
+            <option value="tablerolls">Table Rolls</option>
+            <option value="plates">Paper Plates</option>
+            <option value="plates">Drawing Books</option>
+            <option value="plates">Toilet Rolls</option>
+            <option value="plates">Tissue Paper</option>
+          </select>
+    
+          <label for="quantity">Quantity Needed</label>
+          <input type="number" id="quantity" name="quantity" required />
+    
+          <label for="location">Delivery Location</label>
+          <input type="text" id="location" name="location" required />
+    
+          <label for="preferredContact">Preferred Contact Method</label>
+          <select id="preferredContact" name="preferredContact" required>
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+          </select>
+    
+          <button type="submit">📤 Submit</button>
+        </form>
+      </div>
+    </div>
+    
+  </section>
+   <!-- *****FOOTER **** -->
+<footer style="background: linear-gradient(to right, #00c3ff, #005f99); color: #f4f6f8; padding: 20px; font-family: 'Roboto', sans-serif; border-top: 1px solid #ddd;">
+  <div class="footer-container">
+
+    <!-- Quick Links Section -->
+    <div class="footer-column">
+      <h3 class="footer-title">QUICK LINKS</h3>
+      <ul class="footer-links">
+        <li><a href="home1.html">Home</a></li>
+        <li><a href="whoweare1.html">Who We Are</a></li>
+        <li><a href="services1.html">Our Services</a></li>
+        <li><a href="gallery1.html">Gallery</a></li>
+        <li><a href="contact1.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info Section -->
+    <div class="footer-column">
+      <h3 class="footer-title">CONTACT INFO</h3>
+      <p><strong style="font-size: large;">Sai Hari Papers</strong><br />
+        No.6, Chinna Subbannan Layout, NSR Road,<br />
+        Sai Baba Colony, Coimbatore – 641011</p>
+      <p><strong>Office Timings:</strong> 9.00 AM – 7.00 PM</p>
+      <p>📞 04288-291062 | 📞 9750945039</p>
+      <p>✉️ saiharipapers@gmail.com</p>
+      <p><a href="https://goo.gl/maps/Ewt5EWQABJuNsHEJ8" target="_blank">Google Maps</a></p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #dcdcdc;">
+    © 2025 Sai Hari Papers. Designed by <strong>Your Designer Name</strong>
+  </div>
+</footer>
+
+  <!-- JavaScript for Splash Screen -->
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById('splashScreen').style.opacity = '0';
+        setTimeout(function() {
+          document.getElementById('splashScreen').style.display = 'none';
+        }, 500); // Time for fade-out
+      }, 2000); // Time the splash screen stays (2 seconds)
+    };
+  </script>
+</body>
+</html>

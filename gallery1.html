@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saihari Papers - Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family:  sans-serif;
+      background: #f4f4f4;
+      align-items: center;
+      justify-content: baseline;
+      font-size: medium;
+    }
+    header {
+      background-color: #ffffff;
+      color: #035b8b;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Ensure it appears on top of all content */
+      transition: opacity 0.1 s ease;
+    }
+    .splash-screen img {
+      width: 350px; /* Adjust logo size */
+      height: auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 80px;
+      width: 180px;
+      margin-right: 10px;
+    }
+    .contact {
+      font-size: 14px;
+    }
+    nav {
+      background: linear-gradient(to right, #00c3ff, #005f99);
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #f0f3f5;
+      font-weight: 700;
+      font-size:large;
+    }
+    .section {
+      padding: 50px 20px;
+      text-align: center;
+      background-color: #fff;
+    }
+    .section h2 {
+      color:#035b8b;
+      margin-bottom: 20px;
+    }
+/* *****scroll***** */
+.scroll-gallery {
+      padding: 50px 20px;
+      background-color: #ffffff;
+      text-align: center;
+    }
+
+    .scroll-gallery h2 {
+      color: #035b8b;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #00c3ff;
+      border-radius: 4px;
+    }
+
+    .scroll-item {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .scroll-item:hover {
+      transform: scale(1.05);
+    }
+
+    .scroll-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+/* Gallery Card Animation */
+.gallery-card {
+  background:linear-gradient( #ffffff, #17cbdb,white); /* Soft background */
+  border: 5px solid transparent; /* For gradient border trick */
+  border-radius: 30px;
+  padding: 5px;
+  transition: all 0.2 s ease-out;
+  background-clip: padding-box;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.gallery-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.25);
+  border: #c9c5c5;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  row-gap: 50px;
+  column-gap: 80px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0,0.5,0,0.15);
+}
+/* ******FOOTER********* */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 280px;
+  text-align: left;
+}
+
+.footer-title {
+  border-bottom: 2px solid #00b4d8;
+  display: inline-block;
+  padding-bottom: 5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #fafbfb;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+/* Base responsive setup */
+* {
+  box-sizing: border-box;
+}
+
+.about-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.about-content-wrapper > div {
+  flex: 1;
+  min-width: 280px; /* allows wrapping nicely on mobile */
+}
+
+   /* Media query for mobile devices */
+@media (max-width: 768px) {
+  .about-content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .about-content-wrapper > div {
+    width: 100%;
+    max-width: 100%;
+  }
+      .about-text {
+        order: 2;
+        padding: 20px 0;
+      }
+
+      .about-image {
+        order: 1;
+        margin-bottom: 20px;
+      }
+
+      .right-image {
+        order: 3;
+      }
+      .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+  }
+
+  .footer-column {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+     <!-- Splash Screen -->
+     <div class="splash-screen" id="splashScreen">
+      <img src="/images/logo.jpg" alt="Saihari Papers Logo" />
+    </div>
+
+  <header>
+    <div class="logo">
+      <a href="home1.html"><img src="/images/logo.jpg" alt="Saihari Papers Logo" /></a>
+      <!-- <strong>Saihari Papers</strong> -->
+    </div>
+    <div class="contact">
+      📞 9865543794 | ✉️ 
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=saiharipapers@gmail.com" target="_blank" style="color:#00c3ff;text-decoration:none;" ">
+        saiharipapers@gmail.com</a>
+       | 📍 
+      <a href="https://goo.gl/maps/Ewt5EWQABJuNsHEJ8" style="color:#00c3ff; text-decoration:none;"> Locate Us </a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="home1.html">Home</a> |
+        <a href="whoweare1.html">Who We Are</a> |
+        <a href="services1.html">Services</a> |
+        <a href="gallery1.html">Gallery</a> |
+        <a href="contact1.html">Contact</a>
+  </nav>
+  <!-- Horizontally Scrollable Image Gallery -->
+  <section class="scroll-gallery">
+    <h2>Our Product Showcase</h2>
+    <div class="scroll-container">
+      <div class="scroll-item"><img src="/images/SSP_5353.jpg" alt="Gallery 1"></div>
+      <div class="scroll-item"><img src="/images/SSP_5361.jpg" alt="Gallery 2"></div>
+      <div class="scroll-item"><img src="/images/SSP_5384.jpg" alt="Gallery 3"></div>
+      <div class="scroll-item"><img src="/images/SSP_5330.jpg" alt="Gallery 4"></div>
+      <div class="scroll-item"><img src="/images/SSP_5344.jpg" alt="Gallery 5"></div>
+      <div class="scroll-item"><img src="/images/SSP_5354.jpg" alt="Gallery 6"></div>
+      <div class="scroll-item"><img src="/images/SSP_5327.jpg" alt="Gallery 7"></div>
+      <div class="scroll-item"><img src="/images/SSP_5385.jpg" alt="Gallery 8"></div>
+      <div class="scroll-item"><img src="/images/SSP_5328.jpg" alt="Gallery 9"></div>
+      <div class="scroll-item"><img src="/images/SSP_5412.jpg" alt="Gallery 10"></div>
+      <div class="scroll-item"><img src="/images/SSP_5334.jpg" alt="Gallery 10"></div>
+      <div class="scroll-item"><img src="/images/SSP_5358.jpg" alt="Gallery 10"></div>
+      <div class="scroll-item"><img src="/images/SSP_5362.jpg" alt="Gallery 10"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Gallery</h2>
+    <p >Moments from our manufacturing unit, product line, and events. </p>  <br>
+    
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+      <img src="images/factoryw.JPG" alt="Factory Image 1" class="gallery-card" />
+      <img src="images/factory1.JPG" alt="Factory Image 2" class="gallery-card" />
+      <img src="images/drawing book.JPG" alt="Product Display" class="gallery-card" />
+      <img src="images/event.JPG" alt="Event Snapshot" class="gallery-card" />
+      <img src="images/team.JPG" alt="Team Collaboration" class="gallery-card" />
+      <img src="images/paperroll.jpg" alt="Paperroll" class="gallery-card" />
+      <img src="images/pack.JPG" alt="packaging" class="gallery-card" />
+      <img src="images/package rolls.JPG" alt="package rolls" class="gallery-card" />
+      <img src="images/SSP_5351.JPG" alt="SSP_5351" class="gallery-card" />
+      <img src="images/SSP_5361.JPG" alt="SSP_5361" class="gallery-card" />
+      <img src="images/SSP_5382.JPG" alt="SSP_5382" class="gallery-card" />
+      <img src="images/SSP_5362.JPG" alt="SSP_5362" class="gallery-card" />
+      <img src="images/SSP_5358.JPG" alt="SSP_5358" class="gallery-card" />
+      <img src="images/SSP_5354.JPG" alt="SSP_5354" class="gallery-card" />
+      <img src="images/SSP_5330.JPG" alt="SSP_5330" class="gallery-card" />
+    </div>
+  </section>
+  <!-- *****FOOTER **** -->
+<footer style="background: linear-gradient(to right, #00c3ff, #005f99); color: #f4f6f8; padding: 20px; font-family: 'Roboto', sans-serif; border-top: 1px solid #ddd;">
+  <div class="footer-container">
+
+    <!-- Quick Links Section -->
+    <div class="footer-column">
+      <h3 class="footer-title">QUICK LINKS</h3>
+      <ul class="footer-links">
+        <li><a href="home1.html">Home</a></li>
+        <li><a href="whoweare1.html">Who We Are</a></li>
+        <li><a href="services1.html">Our Services</a></li>
+        <li><a href="gallery1.html">Gallery</a></li>
+        <li><a href="contact1.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info Section -->
+    <div class="footer-column">
+      <h3 class="footer-title">CONTACT INFO</h3>
+      <p><strong style="font-size: large;">Sai Hari Papers</strong><br />
+        No.6, Chinna Subbannan Layout, NSR Road,<br />
+        Sai Baba Colony, Coimbatore – 641011</p>
+      <p><strong>Office Timings:</strong> 9.00 AM – 7.00 PM</p>
+      <p>📞 04288-291062 | 📞 9750945039</p>
+      <p>✉️ saiharipapers@gmail.com</p>
+      <p><a href="https://goo.gl/maps/Ewt5EWQABJuNsHEJ8" target="_blank">Google Maps</a></p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #dcdcdc;">
+    © 2025 Sai Hari Papers. Designed by <strong>Your Designer Name</strong>
+  </div>
+</footer>
+
+  <!-- JavaScript for Splash Screen -->
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById('splashScreen').style.opacity = '0';
+        setTimeout(function() {
+          document.getElementById('splashScreen').style.display = 'none';
+        }, 500); // Time for fade-out
+      }, 2000); // Time the splash screen stays (2 seconds)
+    };
+  </script>
+</body>
+</html>

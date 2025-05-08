@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saihari Papers - Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family:  sans-serif;
+      background: #f4f4f4;
+      align-items: center;
+      justify-content: baseline;
+      font-size: medium;
+    }
+
+    header {
+      background-color: #fff;
+      color: #035b8b;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+
+    .splash-screen img {
+      width: 350px;
+      height: auto;
+    }
+
+    .logo img {
+      height: 80px;
+      width: 180px;
+      margin-right: 10px;
+    }
+
+    .contact {
+      font-size: 14px;
+    }
+
+    nav {
+      background: linear-gradient(to right, #00c3ff, #005f99);
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #eaeef0;
+      font-weight: 700;
+      font-size:large;
+    }
+
+    .products-section {
+  padding: 50px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.products-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products-section h2 {
+  font-size: 2.5em;
+  color: #0a6ea4;
+  margin-bottom: 40px;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  
+}
+
+/* New Card Style */
+.product-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(14px);
+  border-radius: 30px;
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.product-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ff4d4d;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 50%;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-top: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.product-card h3 {
+  font-size: 1.4em;
+  color: #035b8b;
+  margin: 15px 0 10px;
+}
+
+.product-card p {
+  font-size: 16px;
+  color: #444;
+  padding: 0 10px 15px;
+}
+
+.product-btn {
+  background-color: #035b8b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 500;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-btn:hover {
+  background-color: #003f66;
+}
+/* ******FOOTER********* */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 280px;
+  text-align: left;
+}
+
+.footer-title {
+  border-bottom: 2px solid #00b4d8;
+  display: inline-block;
+  padding-bottom: 5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #fafbfb;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+/* Base responsive setup */
+* {
+  box-sizing: border-box;
+}
+
+.about-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.about-content-wrapper > div {
+  flex: 1;
+  min-width: 280px; /* allows wrapping nicely on mobile */
+}
+
+   /* Media query for mobile devices */
+@media (max-width: 768px) {
+  .about-content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .about-content-wrapper > div {
+    width: 100%;
+    max-width: 100%;
+  }
+      .about-text {
+        order: 2;
+        padding: 20px 0;
+      }
+
+      .about-image {
+        order: 1;
+        margin-bottom: 20px;
+      }
+
+      .right-image {
+        order: 3;
+      }
+      .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+  }
+
+  .footer-column {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div class="splash-screen" id="splashScreen">
+    <img src="/images/logo.jpg" alt="Saihari Papers Logo"/>
+  </div>
+
+  <header>
+    <div class="logo">
+      <a href="home1.html"><img src="/images/logo.jpg" alt="Saihari Papers Logo"/></a>
+    </div>
+    <div class="contact">
+      📞 9865543794 | ✉️ 
+      <a href="mailto:saiharipapers@gmail.com" style="text-decoration: none;color: #00c3ff;">saiharipapers@gmail.com</a> |
+      📍 <a href="https://goo.gl/maps/Ewt5EWQABJuNsHEJ8" target="_blank" style="text-decoration: none; color: #00c3ff;">Locate Us</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="home1.html">Home</a> |
+    <a href="whoweare1.html">Who We Are</a> |
+    <a href="services1.html">Services</a> |
+    <a href="gallery1.html">Gallery</a> |
+    <a href="contact1.html">Contact</a>
+  </nav>
+
+<!-- Products Section -->
+<section class="products-section">
+  <div class="products-wrapper">
+    <h2>OUR PRODUCTS</h2>
+    <div class="products-container">
+
+      <div class="product-card">
+        <div class="product-icon">📒</div>
+        <img src="images/NOTE.jpg" alt="Notebooks"/>
+        <h3>NOTEBOOKS</h3>
+        <p>Perfect for students and professionals with a clean design and strong binding.</p>
+        <!-- <button class="product-btn">Explore</button> -->
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">📄</div>
+        <img src="images/COPIERS.jpg" alt="Copiers"/>
+        <h3>COPIERS</h3>
+        <p>High-quality paper compatible with all types of printers and copiers.</p>
+        <!-- <button class="product-btn">Explore</button> -->
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🍞</div>
+        <img src="images/BAKERY SHEETS.jpg" alt="Bakery Sheets"/>
+        <h3>BAKERY SHEETS</h3>
+        <p>Grease-proof sheets for baking and wrapping bakery items with ease.</p>
+        <!-- <button class="product-btn">Explore</button> -->
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🧻</div>
+        <img src="images/TABLE ROLL PAPER.jpg" alt="Table Roll"/>
+        <h3>TABLE ROLL</h3>
+        <p>Durable and hygienic table roll paper for clean and elegant setups.</p>
+        <!-- <button class="product-btn">Explore</button> -->
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🍽️</div>
+        <img src="images/PAPER PLATES.jpg" alt="Paper Plates"/>
+        <h3>PAPER PLATES</h3>
+        <p>Sturdy and eco-friendly plates for all types of gatherings and meals.</p>
+        <!-- <button class="product-btn">Explore</button> -->
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🎨</div>
+        <img src="images/drawing book.JPG" alt="Drawing Books"/>
+        <h3>DRAWING BOOKS</h3>
+        <p>Thick, smooth pages ideal for sketches, drawings, and art practice.</p>
+        <!-- <button class="product-btn">Explore</button> -->
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🧻</div>
+        <img src="images/TOIILET ROLLS PAPER.jpg" alt="Toilet Rolls"/>
+        <h3>TOILET ROLLS</h3>
+        <p>Soft and absorbent toilet tissue rolls for daily hygiene and comfort.</p>
+        <!-- <button class="product-btn">Explore</button> -->
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🧺</div>
+        <img src="images/TISSUE PAPER BUNDLE.jpg" alt="Tissue Paper"/>
+        <h3>TISSUE PAPER</h3>
+        <p>Multi-purpose tissues suitable for kitchen, dining, and personal use.</p>
+        <!-- <button class="product-btn">Explore</button> -->
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">📦</div>
+        <img src="images/kraft paper rolls.jpg" alt="Kraft Paper Rolls"/>
+        <h3>KRAFT PAPER ROLLS</h3>
+        <p>Strong kraft paper rolls for packing, wrapping, and industrial use.</p>
+        <!-- <button class="product-btn">Explore</button> -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- *****FOOTER **** -->
+<footer style="background: linear-gradient(to right, #00c3ff, #005f99); color: #f4f6f8; padding: 20px; font-family: 'Roboto', sans-serif; border-top: 1px solid #ddd;">
+  <div class="footer-container">
+
+    <!-- Quick Links Section -->
+    <div class="footer-column">
+      <h3 class="footer-title">QUICK LINKS</h3>
+      <ul class="footer-links">
+        <li><a href="home1.html">Home</a></li>
+        <li><a href="whoweare1.html">Who We Are</a></li>
+        <li><a href="services1.html">Our Services</a></li>
+        <li><a href="gallery1.html">Gallery</a></li>
+        <li><a href="contact1.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info Section -->
+    <div class="footer-column">
+      <h3 class="footer-title">CONTACT INFO</h3>
+      <p><strong style="font-size: large;">Sai Hari Papers</strong><br />
+        No.6, Chinna Subbannan Layout, NSR Road,<br />
+        Sai Baba Colony, Coimbatore – 641011</p>
+      <p><strong>Office Timings:</strong> 9.00 AM – 7.00 PM</p>
+      <p>📞 04288-291062 | 📞 9750945039</p>
+      <p>✉️ saiharipapers@gmail.com</p>
+      <p><a href="https://goo.gl/maps/Ewt5EWQABJuNsHEJ8" target="_blank">Google Maps</a></p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #dcdcdc;">
+    © 2025 Sai Hari Papers. Designed by <strong>Your Designer Name</strong>
+  </div>
+</footer>
+  <!-- Splash Screen Script -->
+  <script>
+    window.onload = () => {
+      setTimeout(() => {
+        const splash = document.getElementById('splashScreen');
+        splash.style.opacity = '0';
+        setTimeout(() => splash.style.display = 'none', 500);
+      }, 2000);
+    };
+  </script>
+</body>
+</html>
